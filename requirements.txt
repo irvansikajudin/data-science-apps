@@ -10,7 +10,7 @@ bokeh==2.4.3
 shap==0.41.0
 changefinder==0.3
 tabulate==0.8.10
-ipython==7.29.0
+ipython
 warning
 time
 plotly
