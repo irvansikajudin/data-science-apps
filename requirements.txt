@@ -6,4 +6,4 @@ seaborn
 scikit-learn
 shap==0.41.0
 plotly
-xgboost
+joblib
