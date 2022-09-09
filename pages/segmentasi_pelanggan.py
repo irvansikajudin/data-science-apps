@@ -38,6 +38,7 @@ Aplikasi ini membuat segmentasi **Pelanggan pada perusahaan penerbangan**!,
 """)
 # st.write('App ini dibuat untuk melihat segmentasi pada perushaan penerbangan, dan pada ini anda dapat melihat LRFMC menggunakan grafik')
 st.write('Anda dapat memilih beberapa fitur di sidebar ya... :)')
+st.write('Loading kali ini akan sangat lama, karena visualisasi segmentasi membutuhkan banyak komputasi, tunggu sampai selesai ya untuk informasi yang lebih detail terkait project ini')
 st.write('---')
 
 st.sidebar.info('### Pilih Parameter Input')
