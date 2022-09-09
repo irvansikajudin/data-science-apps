@@ -16,7 +16,9 @@ Aplikasi ini memprediksi **Resiko Kredit yang dimiliki pelanggan berdasarkan pri
 
 # Loads the Boston House Price Dataset
 # boston = datasets.load_boston()
-dataset = pd.read_csv('dataset/loan_data_2007_2014_clean.csv')
+# dataset = pd.read_csv('dataset/loan_data_2007_2014_clean.csv')
+dataset = pd.read_csv('https://drive.google.com/uc?export=download&id=1AvcK-Mj_kG-AGi0P0BD7hixVNFpeSya-')
+# dataset = pd.read_csv('')
 X = dataset.drop('target', axis=1)
 y = dataset['target']
 
@@ -367,7 +369,7 @@ df = user_input_features()
 
 # load the model from disk
 from joblib import dump, load
-# import xgboost as xgb
+import xgboost as xgb
 
 
 # result = loaded_model.score(X_test, Y_test)
