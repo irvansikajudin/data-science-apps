@@ -197,11 +197,11 @@ df = user_input_features()
 
 # load the model from disk
 from joblib import dump, load
-import xgboost as xgb
+# import xgboost as xgb
 
 
 # result = loaded_model.score(X_test, Y_test)
-model = load(open('ml_model/xgbcmodel_deposito.pkl', 'rb'))
+model = load(open('ml_model/rfcmodel_deposito.pkl', 'rb'))
 # model = RandomForestRegressor()
 # model.fit(X, Y)
 # Apply Model to Make Prediction
