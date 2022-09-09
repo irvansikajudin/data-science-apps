@@ -16,25 +16,22 @@ Aplikasi ini memprediksi **Resiko Kredit yang dimiliki pelanggan berdasarkan pri
 
 # Loads the Boston House Price Dataset
 # boston = datasets.load_boston()
-# dataset = pd.read_csv('dataset/loan_data_2007_2014_clean.csv')
-dataset = pd.read_csv('dataset/loan_data_2007_2014_clean_0_05_persen_dari_aslinya.csv')
-# dataset = pd.read_csv('https://drive.google.com/uc?export=download&id=1AvcK-Mj_kG-AGi0P0BD7hixVNFpeSya-')
-# dataset = pd.read_csv('')
-X = dataset.drop('target', axis=1)
-y = dataset['target']
+# # dataset = pd.read_csv('dataset/loan_data_2007_2014_clean.csv')
+# dataset = pd.read_csv('dataset/loan_data_2007_2014_clean_0_05_persen_dari_aslinya.csv')
+# # dataset = pd.read_csv('https://drive.google.com/uc?export=download&id=1AvcK-Mj_kG-AGi0P0BD7hixVNFpeSya-')
+# # dataset = pd.read_csv('')
+# X = dataset.drop('target', axis=1)
+# y = dataset['target']
 
-# karena data terlalu besar maka akan saya split
-from sklearn.model_selection import train_test_split
-X_train, X_test,y_train,y_test = train_test_split(X,
-                                                y,
-                                                test_size = 0.2,
-                                                random_state = 42)
+# # karena data terlalu besar maka akan saya split
+# from sklearn.model_selection import train_test_split
+# X_train, X_test,y_train,y_test = train_test_split(X,
+#                                                 y,
+#                                                 test_size = 0.2,
+#                                                 random_state = 42)
 
 
 
-# X.drop('target', axis=1, inplace=True)
-# X = pd.DataFrame(boston.data, columns=boston.feature_names)
-# Y = pd.DataFrame(boston.target, columns=["MEDV"])
 
 # Sidebar
 # Header of Specify Input Parameters
@@ -354,14 +351,14 @@ def user_input_features():
     return features
 
 
-feature_imp = st.sidebar.selectbox('Mau pake features important?',('Tidak','Ya'))
+# feature_imp = st.sidebar.selectbox('Mau pake features important?',('Tidak','Ya'))
 # st.write('You selected:', feature_imp)
 
-if feature_imp == 'Tidak':
-    st.warning('Kamu lagi ga pake fitur important ya..!, kalo kamu mau pake, aktifin di sidebar ya :), tapi kalo kamu pake, Machine Learning akan lebih berat sehingga loadingnya bakal lebih lama')
-else:
-    st.info('Kamu lagi pake Features Important, ingat Machine learning jadi lebih berat, loading bakal lebih lama ya!.')
-st.write('---')
+# if feature_imp == 'Tidak':
+#     st.warning('Kamu lagi ga pake fitur important ya..!, kalo kamu mau pake, aktifin di sidebar ya :), tapi kalo kamu pake, Machine Learning akan lebih berat sehingga loadingnya bakal lebih lama')
+# else:
+#     st.info('Kamu lagi pake Features Important, ingat Machine learning jadi lebih berat, loading bakal lebih lama ya!.')
+# st.write('---')
 
 df = user_input_features() 
 
@@ -403,20 +400,20 @@ st.write('---')
 # # https://github.com/slundberg/shap
 # # hanya gunakanan X_test untuk melihat feature important
 
-if feature_imp == 'Ya':
-    explainer = shap.TreeExplainer(model)
-    # shap_values = explainer.shap_values(X)
-    shap_values = explainer.shap_values(X_test)
-    st.set_option('deprecation.showPyplotGlobalUse', False) #untuk memastikan fitur berfungsi baik di versi terbaru
-    st.header('Feature Importance')
-    plt.title('Feature importance based on SHAP values')
-    # shap.summary_plot(shap_values, X)
-    shap.summary_plot(shap_values, X_test)
-    st.pyplot(bbox_inches='tight')
-    st.write('---')
-    plt.title('Feature importance based on SHAP values (Bar)')
-    shap.summary_plot(shap_values, X, plot_type="bar")
-    st.pyplot(bbox_inches='tight')
+# if feature_imp == 'Ya':
+#     explainer = shap.TreeExplainer(model)
+#     # shap_values = explainer.shap_values(X)
+#     shap_values = explainer.shap_values(X_test)
+#     st.set_option('deprecation.showPyplotGlobalUse', False) #untuk memastikan fitur berfungsi baik di versi terbaru
+#     st.header('Feature Importance')
+#     plt.title('Feature importance based on SHAP values')
+#     # shap.summary_plot(shap_values, X)
+#     shap.summary_plot(shap_values, X_test)
+#     st.pyplot(bbox_inches='tight')
+#     st.write('---')
+#     plt.title('Feature importance based on SHAP values (Bar)')
+#     shap.summary_plot(shap_values, X, plot_type="bar")
+#     st.pyplot(bbox_inches='tight')
 # else:
 #     st.warning('---')
 
