@@ -132,7 +132,7 @@ from IPython.display import HTML, display
 
 
 # df = pd.read_csv('C:/Users/irvan/Downloads/machine_temperature_system_failure.csv')
-df = pd.read_csv('machine_temperature_system_failure.csv')
+df = pd.read_csv('dataset/machine_temperature_system_failure.csv')
 df.head(3)
 
 
