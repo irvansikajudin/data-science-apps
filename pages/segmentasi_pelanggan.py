@@ -161,11 +161,17 @@ WORK_COUNTRY.head(3)
 # In[12]:
 
 
+GENDER = data['GENDER'].value_counts().reset_index()
+GENDER.columns = ['GENDER', 'FREQ']
+GENDER['PERCENTAGE'] = round((GENDER['FREQ']/GENDER['FREQ'].sum())*100,2)
+GENDER = GENDER[0:10]
+GENDER.head(3)
+
 cat_feature = ['GENDER','WORK_CITY','WORK_PROVINCE','WORK_COUNTRY']
 
 f,ax = plt.subplots(2,2,figsize=(18,15))
 
-g = sns.countplot('GENDER',data=data,palette='husl', ax=ax[0,0])
+g = sns.barplot(x='GENDER',y='FREQ',data=GENDER, palette='husl', ax=ax[0,0])
 ax[0,0].set_title('Gender')
 ax[0,0].set_xlabel('Gender')
 ax[0,0].set_ylabel('Frequency')
