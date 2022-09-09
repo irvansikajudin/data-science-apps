@@ -403,21 +403,21 @@ features = list(data_LRFMC)
 # In[24]:
 
 
-plt.figure(figsize=(10, 10))
-for i in range(0, len(features)):
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    plt.subplot(7, 1, i+1)
-    sns.boxplot(data_LRFMC[features[i]],orient='h',color='green')
-    # plt.tight_layout() 
-    # st.pyplot(bbox_inches='tight') # untuk streamlit
+# plt.figure(figsize=(10, 10))
+# for i in range(0, len(features)):
+#     st.set_option('deprecation.showPyplotGlobalUse', False)
+#     plt.subplot(7, 1, i+1)
+#     sns.boxplot(data_LRFMC[features[i]],orient='h',color='green')
+#     # plt.tight_layout() 
+#     # st.pyplot(bbox_inches='tight') # untuk streamlit
 
-plt.figure(figsize=(10, 10))
-for i in range(0, len(features)):
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    plt.subplot(7, 1, i+1)
-    sns.boxplot(np.log1p(data_LRFMC[features[i]])+1,orient='h',color='green')
-    # plt.tight_layout()
-    # st.pyplot(bbox_inches='tight') # kode untuk streamlit
+# plt.figure(figsize=(10, 10))
+# for i in range(0, len(features)):
+#     st.set_option('deprecation.showPyplotGlobalUse', False)
+#     plt.subplot(7, 1, i+1)
+#     sns.boxplot(np.log1p(data_LRFMC[features[i]])+1,orient='h',color='green')
+#     # plt.tight_layout()
+#     # st.pyplot(bbox_inches='tight') # kode untuk streamlit
     
 
 
@@ -474,13 +474,13 @@ LRFMC = data_LRFMC
 # In[30]:
 
 
-plt.figure(figsize=(10, 10))
-for i in range(0, len(features)):
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    plt.subplot(7, 1, i+1)
-    sns.boxplot(data_LRFMC[features[i]],orient='h',color='green')
-    # plt.tight_layout() 
-    # st.pyplot(bbox_inches='tight') # kode untuk streamlit
+# plt.figure(figsize=(10, 10))
+# for i in range(0, len(features)):
+#     st.set_option('deprecation.showPyplotGlobalUse', False)
+#     plt.subplot(7, 1, i+1)
+#     sns.boxplot(data_LRFMC[features[i]],orient='h',color='green')
+#     # plt.tight_layout() 
+#     # st.pyplot(bbox_inches='tight') # kode untuk streamlit
 
 
 # ## Scaling
