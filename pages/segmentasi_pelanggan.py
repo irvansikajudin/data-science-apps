@@ -54,7 +54,8 @@ radar_chart = st.sidebar.selectbox('Mau liihat Radar Chart LRFMC ?',('Ya','Tidak
 # In[3]:
 
 
-data = pd.read_csv('dataset/flight.csv')
+# data = pd.read_csv('dataset/flight.csv')
+data = pd.read_csv('https://drive.google.com/uc?export=download&id=1WFr0QlCqdHvb-9ShU-8-CWzhA6F8qL_e')
 print(data.shape)
 data = data.drop('MEMBER_NO', axis=1)
 data.head()
