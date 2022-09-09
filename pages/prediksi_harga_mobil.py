@@ -15,7 +15,8 @@ Aplikasi ini memprediksi **Harga Mobil**!,
 
 # Loads the Boston House Price Dataset
 # boston = datasets.load_boston()
-X = pd.read_csv('dataset/car_price_after_preprocessing_tanpa_target.csv')
+# X = pd.read_csv('dataset/car_price_after_preprocessing_tanpa_target.csv')
+X = pd.read_csv('https://drive.google.com/uc?export=download&id=1vMj_AYOv4OxbNlAMYyZOhMMPaTYYFm5n')
 # X = pd.DataFrame(boston.data, columns=boston.feature_names)
 # Y = pd.DataFrame(boston.target, columns=["MEDV"])
 
