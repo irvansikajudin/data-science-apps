@@ -16,7 +16,8 @@ Aplikasi ini memprediksi **Kemungkinan Pelanggan Melakukan Deposito**!,
 
 # Loads the Boston House Price Dataset
 # boston = datasets.load_boston()
-dataset = pd.read_csv('dataset/deposito_clean.csv')
+# dataset = pd.read_csv('dataset/deposito_clean.csv')
+dataset = pd.read_csv('https://drive.google.com/uc?export=download&id=1xFtcJgieQsq7jgY7F32Jo6vRHR3FQeMv')
 X = dataset.drop('deposit', axis=1)
 y = dataset['deposit']
 
@@ -196,7 +197,7 @@ df = user_input_features()
 
 # load the model from disk
 from joblib import dump, load
-# import xgboost as xgb
+import xgboost as xgb
 
 
 # result = loaded_model.score(X_test, Y_test)
