@@ -54,11 +54,11 @@ radar_chart = st.sidebar.selectbox('Mau liihat Radar Chart LRFMC ?',('Ya','Tidak
 # In[3]:
 
 
-data = pd.read_csv('dataset/flight.csv')
+datasett = pd.read_csv('dataset/flight.csv')
 # data = pd.read_csv('https://drive.google.com/uc?export=download&id=1WFr0QlCqdHvb-9ShU-8-CWzhA6F8qL_e')
-print(data.shape)
-data = data.drop('MEMBER_NO', axis=1)
-data.head()
+print(datasett.shape)
+datasett = datasett.drop('MEMBER_NO', axis=1)
+datasett.head()
 
 
 # # Data Understanding
@@ -68,7 +68,7 @@ data.head()
 # In[4]:
 
 
-data.info()
+datasett.info()
 
 
 # **Terdapat 62988 row data dengan 23 fitur dimana tidak memiliki target/output/label sehingga pada kasus segmentasi ini akan menggunakan jenis Machine Learning Unsupervised - Clustering**<br>
@@ -86,8 +86,8 @@ data.info()
 
 numerics = ['int8','int16', 'int32', 'int64', 'float16', 'float32', 'float64']
 # display(data.select_dtypes(include=numerics).columns)
-print(data.select_dtypes(include=numerics).shape)
-data_num = data.select_dtypes(include=numerics)
+print(datasett.select_dtypes(include=numerics).shape)
+data_num = datasett.select_dtypes(include=numerics)
 data_num.head(3)
 
 
@@ -99,8 +99,8 @@ data_num.head(3)
 
 
 # display(data.select_dtypes(include=['object']).columns)
-print(data.select_dtypes(include=object).shape)
-data_cat = data.select_dtypes(include=['object'])
+print(datasett.select_dtypes(include=object).shape)
+data_cat = datasett.select_dtypes(include=['object'])
 data_cat.head(3)
 
 
@@ -131,7 +131,7 @@ data_cat.describe()
 # In[9]:
 
 
-WORK_CITY = data['WORK_CITY'].value_counts().reset_index()
+WORK_CITY = datasett['WORK_CITY'].value_counts().reset_index()
 WORK_CITY.columns = ['WORK_CITY', 'FREQ']
 WORK_CITY['PERCENTAGE'] = round((WORK_CITY['FREQ']/WORK_CITY['FREQ'].sum())*100,2)
 WORK_CITY = WORK_CITY[0:10]
@@ -141,7 +141,7 @@ WORK_CITY.head(3)
 # In[10]:
 
 
-WORK_PROVINCE = data['WORK_PROVINCE'].value_counts().reset_index()
+WORK_PROVINCE = datasett['WORK_PROVINCE'].value_counts().reset_index()
 WORK_PROVINCE.columns = ['WORK_PROVINCE', 'FREQ']
 WORK_PROVINCE['PERCENTAGE'] = round((WORK_PROVINCE['FREQ']/WORK_PROVINCE['FREQ'].sum())*100,2)
 WORK_PROVINCE = WORK_PROVINCE[0:10]
@@ -151,7 +151,7 @@ WORK_PROVINCE.head(3)
 # In[11]:
 
 
-WORK_COUNTRY = data['WORK_COUNTRY'].value_counts().reset_index()
+WORK_COUNTRY = datasett['WORK_COUNTRY'].value_counts().reset_index()
 WORK_COUNTRY.columns = ['WORK_COUNTRY', 'FREQ']
 WORK_COUNTRY['PERCENTAGE'] = round((WORK_COUNTRY['FREQ']/WORK_COUNTRY['FREQ'].sum())*100,2)
 WORK_COUNTRY = WORK_COUNTRY[0:10]
@@ -165,7 +165,7 @@ cat_feature = ['GENDER','WORK_CITY','WORK_PROVINCE','WORK_COUNTRY']
 
 f,ax = plt.subplots(2,2,figsize=(18,15))
 
-g = sns.countplot('GENDER',data=data,palette='husl', ax=ax[0,0])
+g = sns.countplot('GENDER',data=datasett,palette='husl', ax=ax[0,0])
 ax[0,0].set_title('Gender')
 ax[0,0].set_xlabel('Gender')
 ax[0,0].set_ylabel('Frequency')
@@ -205,16 +205,16 @@ data_num.describe()
 
 f,ax = plt.subplots(2,2,figsize=(18,15))
 
-g = sns.distplot(data['AGE'], ax=ax[0,0])
+g = sns.distplot(datasett['AGE'], ax=ax[0,0])
 ax[0,0].set_title('Age Distribution')
 
-g = sns.distplot(data['FLIGHT_COUNT'], ax=ax[0,1], color='red')
+g = sns.distplot(datasett['FLIGHT_COUNT'], ax=ax[0,1], color='red')
 ax[0,1].set_title('Flight Count Distribution')
 
-g = sns.distplot(data['SEG_KM_SUM'], ax=ax[1,0], color='green')
+g = sns.distplot(datasett['SEG_KM_SUM'], ax=ax[1,0], color='green')
 ax[1,0].set_title('the cumulative total distance traveled')
 
-g = sns.distplot(data['avg_discount'], ax=ax[1,1], color='black')
+g = sns.distplot(datasett['avg_discount'], ax=ax[1,1], color='black')
 ax[1,1].set_title('Avg Discount Distribution')
 
 if distribusi == 'Ya':
@@ -249,9 +249,9 @@ sns.heatmap(corr_, annot=True, fmt = ".2f", cmap = "BuPu")
 # In[16]:
 
 
-data_missing_value = data.isnull().sum().reset_index()
+data_missing_value = datasett.isnull().sum().reset_index()
 data_missing_value.columns = ['feature','missing_value']
-data_missing_value['percentage'] = round((data_missing_value['missing_value']/len(data))*100,2)
+data_missing_value['percentage'] = round((data_missing_value['missing_value']/len(datasett))*100,2)
 data_missing_value = data_missing_value.sort_values('percentage', ascending=False).reset_index(drop=True)
 data_missing_value = data_missing_value[data_missing_value['percentage']>0]
 # data_missing_value
@@ -301,7 +301,7 @@ ax.set_xticklabels(ax.get_xticklabels(),rotation=0)
 # In[18]:
 
 
-data = data.dropna()
+datasett = datasett.dropna()
 
 
 # ## Feature Selection
@@ -340,34 +340,34 @@ data = data.dropna()
 # In[19]:
 
 
-data = data[data['SUM_YR_1'].notnull()]
-data = data[data['SUM_YR_2'].notnull()]
+datasett = datasett[datasett['SUM_YR_1'].notnull()]
+datasett = datasett[datasett['SUM_YR_2'].notnull()]
  
  # Only keep records where the fare is non-zero, or the average discount rate is 0 at the same time as the total number of kilometers traveled.
-index1 = data['SUM_YR_1'] != 0
-index2 = data['SUM_YR_2'] != 0
-index3 = (data['SEG_KM_SUM']==0) & (data['avg_discount']==0)
-data = data[index1 | index2 | index3]
+index1 = datasett['SUM_YR_1'] != 0
+index2 = datasett['SUM_YR_2'] != 0
+index3 = (datasett['SEG_KM_SUM']==0) & (datasett['avg_discount']==0)
+datasett = datasett[index1 | index2 | index3]
  #Integrate data into the data variable
 
 
 # In[20]:
 
 
-data = data[['FFP_DATE','LOAD_TIME', 'FLIGHT_COUNT', 'avg_discount', 'SEG_KM_SUM','LAST_TO_END']]
+datasett = datasett[['FFP_DATE','LOAD_TIME', 'FLIGHT_COUNT', 'avg_discount', 'SEG_KM_SUM','LAST_TO_END']]
 
-data['LOAD_TIME'] = pd.to_datetime(data['LOAD_TIME'])
-data['FFP_DATE'] = pd.to_datetime(data['FFP_DATE'])
+datasett['LOAD_TIME'] = pd.to_datetime(datasett['LOAD_TIME'])
+datasett['FFP_DATE'] = pd.to_datetime(datasett['FFP_DATE'])
  
  
  # data_LRFMC data
 data_LRFMC = pd.DataFrame()
 # data_LRFMC.columns = ['L', 'R', 'F','M', 'C']
-data_LRFMC['L'] =((data['LOAD_TIME'] - data['FFP_DATE']).dt.days/30)
-data_LRFMC['R'] = data['LAST_TO_END']
-data_LRFMC['F'] = data['FLIGHT_COUNT']
-data_LRFMC['M'] = data['SEG_KM_SUM']
-data_LRFMC['C'] = data['avg_discount']
+data_LRFMC['L'] =((datasett['LOAD_TIME'] - datasett['FFP_DATE']).dt.days/30)
+data_LRFMC['R'] = datasett['LAST_TO_END']
+data_LRFMC['F'] = datasett['FLIGHT_COUNT']
+data_LRFMC['M'] = datasett['SEG_KM_SUM']
+data_LRFMC['C'] = datasett['avg_discount']
 
 
 # ## Duplicate Values
