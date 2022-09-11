@@ -34,7 +34,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler
 st.write("""
 # App Cluster Pelanggan
 Aplikasi ini membuat segmentasi **Pelanggan pada perusahaan penerbangan**!, 
-[Link dokumentasi Machine Learning di Github](https://github.com/irvansikajudin/Data-Science-Projects-Based-On-Data-Science-Bootcamp/tree/master/flight%20company%20customer%20%20segmentation)
+[Link dokumentasi Machine Learning di Github](https://github.com/irvansikajudin/Data-Science-Projects-Based-On-Data-Science-Bootcamp/blob/master/flight%20company%20customer%20%20segmentation/Day_23_HW_Solution_Machine_Learning_(Unsupervised)%20(1).ipynb)
 """)
 # st.write('App ini dibuat untuk melihat segmentasi pada perushaan penerbangan, dan pada ini anda dapat melihat LRFMC menggunakan grafik')
 st.write('Anda dapat memilih beberapa fitur di sidebar ya... :)')
@@ -801,7 +801,8 @@ if radar_chart == 'Ya':
     # fig.show()
     # st.pyplot(fig)
     # st.plotly_chart(fig, use_container_width=True)
-    st.plotly_chart(fig)
+    # st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 
@@ -828,7 +829,7 @@ if radar_chart == 'Ya':
 
         # fig.show()
         # st.pyplot(fig)
-        # st.plotly_chart(fig, use_container_width=True)
-        st.plotly_chart(fig)
+        # st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
         st.write('---')
 
