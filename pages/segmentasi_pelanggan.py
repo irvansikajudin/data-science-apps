@@ -45,7 +45,7 @@ st.sidebar.info('### Pilih Parameter Input')
 jumlah_cluster = st.sidebar.selectbox('Tentukan Jumlah Cluster :',(3,2,3,4,5,6,7,8,9,10))
 top_ranking = st.sidebar.selectbox('Mau lihat Top Rangking ?',('Ya','Tidak'))
 distribusi = st.sidebar.selectbox('Mau lihat Distribusi Fiturnya ?',('Ya','Tidak'))
-cluster_pca = st.sidebar.selectbox('Mau lihat Clusternya ?',('Ya','Tidak'))
+cluster_pca = st.sidebar.selectbox('Mau lihat Clusternya (PCA) ?',('Tidak','Ya'))
 distribusi_user = st.sidebar.selectbox('Mau lihat Distribusi Usernya ?',('Ya','Tidak'))
 radar_chart = st.sidebar.selectbox('Mau liihat Radar Chart LRFMC ?',('Ya','Tidak'))
 
@@ -524,54 +524,56 @@ LRFMC['cluster'] = kmeans.labels_
 # ## Visualiasasi clustering
 
 # In[34]:
-
-
-pca = PCA(n_components=2)
-
-pca.fit(scaled_data_LRFMC)
-pcs = pca.transform(scaled_data_LRFMC)
-
-data_pca = pd.DataFrame(data = pcs, columns = ['PC 1', 'PC 2'])
-data_pca['clusters'] = kmeans.labels_
-
-
-fig, ax = plt.subplots(figsize=(15,10))
-if jumlah_cluster == 1:
-    palette_color=['#000087']
-elif jumlah_cluster == 2:
-    palette_color=['#000087','#800000']
-elif jumlah_cluster == 3:
-    palette_color=['#000087','#800000','#005f00']
-elif jumlah_cluster == 4:
-    palette_color=['#000087','#800000','#005f00',"#808000"]
-elif jumlah_cluster == 5:
-    palette_color=['#000087','#800000','#005f00',"#808000",'#808080']
-elif jumlah_cluster == 6:
-    palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983']
-elif jumlah_cluster == 7:
-    palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99']
-elif jumlah_cluster == 8:
-    palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99','#F94892']
-elif jumlah_cluster == 9:
-    palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99','#F94892','#FFC090']
-elif jumlah_cluster == 10:
-    palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99','#F94892','#FFC090','#FF1E00']
-sns.scatterplot(
-    x="PC 1", y="PC 2",
-    hue="clusters",
-    edgecolor='white',
-    linestyle='--',
-    data=data_pca,
-    palette= palette_color,
-    # palette=['#000087','#800000','#005f00'], #,"#808000",'#808080'],
-    s=160,
-    ax=ax
-)
-
 if cluster_pca == 'Ya':
+    pca = PCA(n_components=2)
+
+    pca.fit(scaled_data_LRFMC)
+    pcs = pca.transform(scaled_data_LRFMC)
+
+    data_pca = pd.DataFrame(data = pcs, columns = ['PC 1', 'PC 2'])
+    data_pca['clusters'] = kmeans.labels_
+
+
+    fig, ax = plt.subplots(figsize=(15,10))
+    if jumlah_cluster == 1:
+        palette_color=['#000087']
+    elif jumlah_cluster == 2:
+        palette_color=['#000087','#800000']
+    elif jumlah_cluster == 3:
+        palette_color=['#000087','#800000','#005f00']
+    elif jumlah_cluster == 4:
+        palette_color=['#000087','#800000','#005f00',"#808000"]
+    elif jumlah_cluster == 5:
+        palette_color=['#000087','#800000','#005f00',"#808000",'#808080']
+    elif jumlah_cluster == 6:
+        palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983']
+    elif jumlah_cluster == 7:
+        palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99']
+    elif jumlah_cluster == 8:
+        palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99','#F94892']
+    elif jumlah_cluster == 9:
+        palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99','#F94892','#FFC090']
+    elif jumlah_cluster == 10:
+        palette_color=['#000087','#800000','#005f00',"#808000",'#808080','#EE6983','#C3FF99','#F94892','#FFC090','#FF1E00']
+    sns.scatterplot(
+        x="PC 1", y="PC 2",
+        hue="clusters",
+        edgecolor='white',
+        linestyle='--',
+        data=data_pca,
+        palette= palette_color,
+        # palette=['#000087','#800000','#005f00'], #,"#808000",'#808080'],
+        s=160,
+        ax=ax
+    )
+
+    if cluster_pca == 'Ya':
+        st.header('Visualisasi Cluster dengan PCA')
+        st.pyplot(fig)
+        st.write('---')
+else:
     st.header('Visualisasi Cluster dengan PCA')
-    st.pyplot(fig)
-    st.write('---')
+    st.warning('Anda sedang tidak menampilkan visualiasasi clustering dengan PCA, Jika anda ingin menampilkannya, aktifkan di sidebar, namun ingat proses komputasi akan menjadi sangat lama, sehingga anda membutuhkan waktu lebih untuk menuggu proses load visualisasi.')
     
 
 # # Insight - Analysis Clustering
