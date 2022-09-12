@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Homework - Machine Learning Unsupervised
+# # Machine Learning Unsupervised
 
 # In[1]:
 
@@ -45,7 +45,7 @@ st.sidebar.info('### Pilih Parameter Input')
 jumlah_cluster = st.sidebar.selectbox('Tentukan Jumlah Cluster :',(3,2,3,4,5,6,7,8,9,10))
 top_ranking = st.sidebar.selectbox('Mau lihat Top Rangking ?',('Ya','Tidak'))
 distribusi = st.sidebar.selectbox('Mau lihat Distribusi Fiturnya ?',('Ya','Tidak'))
-cluster_pca = st.sidebar.selectbox('Mau lihat Clusternya (PCA) ?',('Tidak','Ya'))
+cluster_pca = st.sidebar.selectbox('Mau lihat Clusternya (PCA) ?',('Ya','Tidak'))
 distribusi_user = st.sidebar.selectbox('Mau lihat Distribusi Usernya ?',('Ya','Tidak'))
 radar_chart = st.sidebar.selectbox('Mau liihat Radar Chart LRFMC ?',('Ya','Tidak'))
 
@@ -801,9 +801,7 @@ if radar_chart == 'Ya':
     )
 
     # fig.show()
-    # st.pyplot(fig)
-    # st.plotly_chart(fig, use_container_width=True)
-    # st.plotly_chart(fig)
+    # st.pyplot(fig, use_container_width=True)
     st.plotly_chart(fig, use_container_width=True)
 
 
@@ -830,8 +828,7 @@ if radar_chart == 'Ya':
         )
 
         # fig.show()
-        # st.pyplot(fig)
-        # st.plotly_chart(fig)
+        # st.pyplot(fig, use_container_width=True)
         st.plotly_chart(fig, use_container_width=True)
         st.write('---')
 
