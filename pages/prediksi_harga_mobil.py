@@ -12,13 +12,7 @@ Aplikasi ini memprediksi **Harga Mobil**!,
 [Link dokumentasi Machine Learning di Github](https://github.com/irvansikajudin/Car-Price-Prediction)
 """)
 
-
-# Loads the Boston House Price Dataset
-# boston = datasets.load_boston()
 X = pd.read_csv('dataset/car_price_after_preprocessing_tanpa_target.csv')
-# X = pd.read_csv('https://drive.google.com/uc?export=download&id=1vMj_AYOv4OxbNlAMYyZOhMMPaTYYFm5n')
-# X = pd.DataFrame(boston.data, columns=boston.feature_names)
-# Y = pd.DataFrame(boston.target, columns=["MEDV"])
 
 # Sidebar
 # Header of Specify Input Parameters
@@ -151,23 +145,15 @@ st.write('---')
 df = user_input_features() 
 
 # Main Panel
-
 # load the model from disk
 from joblib import dump, load
 model = load(open('ml_model/dtreemodel_car_prediction.pkl', 'rb'))
-
-# result = loaded_model.score(X_test, Y_test)
-
-# model = RandomForestRegressor()
-# model.fit(X, Y)
-# Apply Model to Make Prediction
 prediction = model.predict(df)
 
 #Applying anti-log to transform into the normal values
 prediction = np.exp(prediction)-1
 
 st.header('Perkiraan harga mobil')
-# st.write(prediction)
 
 a = 'Mobil dengan karakteristik yang telah dipilih diperkirakan memiliki harga : '
 b = round(prediction.item(0),2)
