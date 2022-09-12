@@ -12,10 +12,6 @@ Aplikasi ini memprediksi **Kemungkinan Pelanggan Melakukan Deposito**!,
 [Link dokumentasi Machine Learning di Github](https://github.com/irvansikajudin/Term-Deposit-Prediction-Bank-Marketing-Campaign-)
 """)
 
-
-
-# Loads the Boston House Price Dataset
-# boston = datasets.load_boston()
 dataset = pd.read_csv('dataset/deposito_clean.csv')
 # dataset = pd.read_csv('https://drive.google.com/uc?export=download&id=1xFtcJgieQsq7jgY7F32Jo6vRHR3FQeMv')
 X = dataset.drop('deposit', axis=1)
@@ -27,9 +23,6 @@ X_train, X_test,y_train,y_test = train_test_split(X,
                                                 y,
                                                 test_size = 0.2,
                                                 random_state = 42)
-# X = pd.DataFrame(boston.data, columns=boston.feature_names)
-# Y = pd.DataFrame(boston.target, columns=["MEDV"])
-
 # Sidebar
 # Header of Specify Input Parameters
 st.sidebar.info('### Pilih Parameter Input')
@@ -216,8 +209,6 @@ if prediction.item(0) == 1:
     st.info('###### Pelanggan dengan karakteristik yang telah dipilih diperkirakan akan melakukan deposito')
 else:
     st.error('###### Pelanggan dengan karakteristik yang telah dipilih diperkirakan tidak akan melakukan deposito')
-
-# st.info(round(prediction.item(0),2) )
 st.write('---')
 
 # Print specified input parameters
@@ -235,9 +226,6 @@ if feature_imp == 'Ya':
     shap_values = explainer.shap_values(X_test)
     st.set_option('deprecation.showPyplotGlobalUse', False) #untuk memastikan fitur berfungsi baik di versi terbaru
     st.header('Feature Importance')
-    # plt.title('Feature importance based on SHAP values')
-    # shap.summary_plot(shap_values, X_test)
-    # st.pyplot(bbox_inches='tight')
     st.write('---')
     plt.title('Feature importance based on SHAP values (Bar)')
     shap.summary_plot(shap_values, X, plot_type="bar")
