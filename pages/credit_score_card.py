@@ -6,6 +6,10 @@ from sklearn import datasets
 from sklearn.ensemble import RandomForestRegressor
 import numpy as np
 
+PAGE_TITLE = "Portfolio Irvan Sikajudin"
+PAGE_ICON = ":wave:"
+st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
+
 st.write("""
 # App Score Card - Resiko Kredit Berdasarkan Waktu Pembayaran Pinjaman
 Aplikasi ini memprediksi **Resiko Kredit yang dimiliki pelanggan berdasarkan prilaku dalam membayaran pinjaman**!, jika telat bayar lebih dari 30 hari maka akan di klasifikasikan sebagai peminjam yang buruk, namun jika di bawah ini maka akan diklasifikasikan sebagai peminjam yang baik, 
