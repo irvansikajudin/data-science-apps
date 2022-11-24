@@ -2,7 +2,7 @@
 import streamlit as st
 
 PAGE_TITLE = "Portfolio Irvan Sikajudin"
-PAGE_ICON = ":sun:"
+PAGE_ICON = ":wave:"
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 st.markdown("# Aplikasi Data Science 🎈")
 st.write("**Aplikasi Data Science berbasis web ini dibangun oleh Irvan Sikajudin, sebagai bentuk portfolio.**")
