@@ -6,9 +6,6 @@ from sklearn import datasets
 from sklearn.ensemble import RandomForestRegressor
 import numpy as np
 
-PAGE_TITLE = "Portfolio Irvan Sikajudin"
-PAGE_ICON = ":wave:"
-st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
 st.write("""
 # App Score Card - Resiko Kredit Berdasarkan Waktu Pembayaran Pinjaman
