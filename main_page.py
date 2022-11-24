@@ -1,6 +1,9 @@
 # Contents of ~/my_app/main_page.py
 import streamlit as st
 
+PAGE_TITLE = "Portfolio Irvan Sikajudin"
+PAGE_ICON = ":wave:"
+st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 st.markdown("# Aplikasi Data Science 🎈")
 st.write("**Aplikasi Data Science berbasis web ini dibangun oleh Irvan Sikajudin, sebagai bentuk portfolio.**")
 st.write("Saya adalah Alumni Bootcamp Data Science di dibimbing.id, saya memproleh penghargaan 1st Runner Up MVP untuk angkatan saya, Saya juga seorang Sarjana Ekonomi, lulusan fakultas ekonomi dan bisnis universitas tanjungpura, Maka dari itu saya membangun aplikasi ini yang bertujuan untuk memvalidasi kemampuan saya dibidang data science dan untuk membantu saya mencari pekerjaan pada bidang ini.")
